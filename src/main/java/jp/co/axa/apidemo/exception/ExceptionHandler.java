@@ -32,4 +32,10 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
         log.error(e.getMessage(), e);
         return new ResponseEntity<>(null, null, HttpStatus.NOT_FOUND);
     }
+
+    @org.springframework.web.bind.annotation.ExceptionHandler({UnauthorizedException.class})
+    public ResponseEntity<Object> handleException(final UnauthorizedException e) {
+        log.error(e.getMessage(), e);
+        return new ResponseEntity<>(null, null, HttpStatus.UNAUTHORIZED);
+    }
 }
